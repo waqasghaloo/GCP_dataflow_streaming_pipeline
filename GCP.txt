@@ -1,0 +1,25 @@
+Run from VScode terminal to login
+
+    gcloud auth login
+
+Run from VS Code terminal to access VM machine
+
+
+    ref: https://cloud.google.com/compute/docs/connect/standard-ssh#thirdpartytools
+    
+    gcloud compute ssh --project=qwiklabs-gcp-02-1715c4ad79c4 --zone=us-central1-f training-vm
+
+Check permissions given to project
+
+    https://cloud.google.com/iam/docs/granting-changing-revoking-access#iam-view-access-gcloud
+
+    gcloud projects get-iam-policy qwiklabs-gcp-01-35227c38cd84
+
+    gcloud iam service-accounts create   {qwiklabs-gcp-01-35227c38cd84}-compute@developer.gserviceaccount.com 
+
+
+Add principal to IAM with gcloud using serviceaccount
+
+    gcloud projects add-iam-policy-binding qwiklabs-gcp-03-84d9f6f20212 --member=serviceAccount:595507047971-compute@developer.gserviceaccount.com --role=roles/editor
+
+    
