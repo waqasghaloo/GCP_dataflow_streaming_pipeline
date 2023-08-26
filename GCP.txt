@@ -22,4 +22,37 @@ Add principal to IAM with gcloud using serviceaccount
 
     gcloud projects add-iam-policy-binding qwiklabs-gcp-03-84d9f6f20212 --member=serviceAccount:595507047971-compute@developer.gserviceaccount.com --role=roles/editor
 
+
     
+Setting up authentication    
+    https://cloud.google.com/code/docs/vscode/client-libraries#setting_up_authentication
+
+
+    1. Authenticate using
+
+        gcloud auth login
+
+    To open a terminal, click Terminal > New Terminal.
+
+
+    2. Create a service account to authenticate your API requests:
+
+
+    gcloud iam service-accounts create myfirst1 --project copper-harbor-397011
+
+
+    3. Grant your service account the appropriate role. The following sample command grants the Cloud Translation API User role. To determine the role to grant, see the documentation for the Cloud API you're using.
+
+
+    gcloud projects add-iam-policy-binding copper-harbor-397011 --member='serviceAccount:myfirst1@copper-harbor-397011.iam.gserviceaccount.com'    --role='roles/cloudtranslate.user'
+
+
+    4. Create a service account key:
+
+
+    gcloud iam service-accounts keys create key.json --iam-account myfirst1@copper-harbor-397011.iam.gserviceaccount.com
+
+
+    5. Set the key as your default credentials:
+
+    set GOOGLE_APPLICATION_CREDENTIALS=key.json        
